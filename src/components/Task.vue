@@ -5,8 +5,9 @@
              <i @click="$emit('delete-task', id)" class="icn-delete fas fa-times"></i>  
 
 
-        <h3 @dblclick="$emit('edit-task', id)">
+        <h3 @click="$emit('edit-task', id)">
             {{text}}
+            <i @click="$emit('edit-task', id)" class="icn-edit fas fa-pen"></i>
         </h3>
         <p>{{day}}</p>
     </div>
@@ -29,6 +30,10 @@
  color:green;
 
 }
+.icn-edit{
+  font-size:12px;
+  margin: 10px 0;
+}
 .icn-delete{
   color: rgb(216, 4, 4);
   float: right;
@@ -42,9 +47,7 @@
 .task.reminder {
   border-left: 5px solid green;
 }
-.task h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.task h3{
+  text-decoration: underline;
 }
 </style>

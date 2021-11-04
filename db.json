@@ -22,13 +22,19 @@
       "id": "Lsws1fj",
       "text": "Add date picker to App",
       "day": "November 3rd 2021",
-      "reminder": true
+      "reminder": false
     },
     {
       "text": "Call Tax Bastards",
       "day": "November 4th 2021",
-      "reminder": true,
+      "reminder": false,
       "id": "D2yOXIS"
+    },
+    {
+      "id": "SFIERHP",
+      "text": "Buy Shiba ",
+      "day": "November 4th 2021",
+      "reminder": true
     }
   ]
 }

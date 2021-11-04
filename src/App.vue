@@ -1,8 +1,14 @@
 <template>
   <div class="container">
     <Header 
+        @toggle-task="toggleTask"
+        :showAddTask="showAddTask"
+        :showEditTask="showEditTask"
         title="Task Tracker"/>
-        <router-view></router-view>
+        <router-view 
+        @show-edit="toggleEdit"
+        :showEditTask="showEditTask"
+        :showAddTask="showAddTask"/>
     <Footer/>
   </div>
 </template>
@@ -14,9 +20,30 @@ import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
+  data() {
+      return {
+          showAddTask:false,
+          showEditTask:false,
+      }
+  },
   components: {
     Header,
     Footer
+  },
+  methods: {
+      toggleTask(){
+          if(this.showEditTask){
+              this.showEditTask = false;
+              return 
+          }
+          this.showAddTask = !this.showAddTask;
+      },
+      toggleEdit(boolean) {
+          if(this.showAddTask){
+              this.showAddTask = false;
+          }
+          this.showEditTask = boolean;
+      }
   },
 }
 </script>

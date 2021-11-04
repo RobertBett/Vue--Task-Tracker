@@ -1,39 +1,39 @@
 <template>
      <form @submit="onSubmit" class="add-form">
-    <div class="form-control">
-      <label>Task</label>
-      <input 
-        type="text" 
-        v-model="newText"
-        name="text" />
-    </div>
-    <div class="form-control">
-      <label>Day & Time</label>
-      <input
-        type="text"
-        v-model="newDay"
-        name="day"
-      />
-    </div>
-    <div class="form-control form-control-check">
-      <label>Set Reminder</label>
-      <input type="checkbox" :checked="newReminder" v-model="newReminder" name="reminder" />
-    </div>
+      <div class="form-control">
+        <label>Task</label>
+        <input 
+          type="text" 
+          v-model="newText"
+          name="text" />
+      </div>
+      <div class="form-control">
+        <label>Day & Time</label>
+        <input
+          type="text"
+          v-model="newDay"
+          name="day"
+        />
+      </div>
+      <div class="form-control form-control-check">
+        <label>Set Reminder</label>
+        <input type="checkbox" :checked="newReminder" v-model="newReminder" name="reminder" />
+      </div>
 
-    <input type="submit" value="Edit Task" class="btn btn-block" />
+      <input type="submit" value="Edit Task" class="btn btn-block" />
   </form>
 </template>
 
 <script>
     export default {
         name: "EditTask",
-         props:['task'],
+        props:['task'],
         watch:{
-          task: function (newVal){
-            this.newText =newVal.text
-            this.newDay =newVal.day
-            this.newReminder = newVal.reminder
-          }
+            task: function (newVal){
+              this.newText =newVal.text
+              this.newDay =newVal.day
+              this.newReminder = newVal.reminder
+            }
         },
         data(){
           return{

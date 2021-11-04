@@ -9,10 +9,7 @@
         @edited-task="afterEditTask"
         :task="editedTask"
     />
-    <Button 
-        @btn-click="toggleTask" 
-        :text="showAddTask ? 'Close' : ' Add Task' " 
-        :color="showAddTask ? 'red' : 'green' "/>
+
     <Tasks 
         @delete-task="deleteTask"
         @toggle-reminder="toggleReminder" 
@@ -24,7 +21,6 @@
 <script>
     import Tasks from '../components/Tasks.vue';
     import AddTask from '../components/AddTask.vue';
-    import Button from '../components/Button.vue'
     import EditTask from '../components/EditTask.vue'
     export default {
         name: 'Home',
@@ -32,16 +28,16 @@
             Tasks,
             AddTask,
             EditTask,
-            Button
-
         },
         data() {
             return {
                 tasks:[],
-                showAddTask:false,
-                showEditTask:false,
                 editedTask:{},
             }
+        },
+        props:{
+            showAddTask:Boolean,
+            showEditTask:Boolean
         },
         methods: {
             async afterEditTask(editedTask){
@@ -53,13 +49,12 @@
                     body: JSON.stringify(editedTask),
                 })
                 this.tasks =  await this.fetchTasks();
-                this.showEditTask = false;
+                this.$emit('show-edit', false);
             },
             async editTask(id){
                 const response = await fetch(`api/tasks/${id}`);
                 this.editedTask = await response.json();
-                this.showEditTask = true;
-
+                this.$emit('show-edit', true);
             },
             async deleteTask(id){
                 if(confirm('Are you sure you want to delete')){
@@ -105,17 +100,11 @@
                     body: JSON.stringify(newTask),
                 })
                 this.tasks =  await this.fetchTasks();
-
-                this.showAddTask = false;
             },
-            toggleTask(){
-                this.showAddTask = !this.showAddTask;
-            }
         },
         async created() {
             this.tasks =  await this.fetchTasks();
-            this.showAddTask= false;
-            this.showEditTask =false;
         },
+        emits:['show-edit'],
     }
 </script>
