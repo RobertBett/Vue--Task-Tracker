@@ -1,11 +1,13 @@
 <template>
-    <div  @click="$emit('toggle-reminder', id)"  
-          :class="[reminder && 'reminder', 'task' ]"
-    >
-        <h3>
+    <div  
+          :class="[reminder && 'reminder', 'task' ]">
+             <i  @click="$emit('toggle-reminder', id)" :class="[reminder && 'icn-reminder', 'fas fa-bell']"></i>  
+             <i @click="$emit('delete-task', id)" class="icn-delete fas fa-times"></i>  
+
+
+        <h3 @dblclick="$emit('edit-task', id)">
             {{text}}
-             <i @click="$emit('delete-task', id)" class="fas fa-times"></i>    
-            </h3>
+        </h3>
         <p>{{day}}</p>
     </div>
 </template>
@@ -23,8 +25,13 @@
 </script>
 
 <style scope>
-.fas {
-  color: red;
+.icn-reminder{
+ color:green;
+
+}
+.icn-delete{
+  color: rgb(216, 4, 4);
+  float: right;
 }
 .task {
   background: #f4f4f4;

@@ -3,6 +3,7 @@
         <Task 
             @delete-task="$emit('delete-task', task.id)"
             @toggle-reminder="$emit('toggle-reminder', task.id)"
+             @edit-task="$emit('edit-task', task.id)" 
             :id="task.id" 
             :text="task.text" 
             :day="task.day" 
@@ -21,6 +22,6 @@
         components:{
             Task
         },
-        emits:['delete-task', 'toggle-reminder'],
+        emits:['delete-task', 'toggle-reminder', 'edit-task'],
     };
 </script>
