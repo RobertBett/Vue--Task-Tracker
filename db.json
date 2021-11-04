@@ -35,6 +35,12 @@
       "text": "Buy Shiba ",
       "day": "November 4th 2021",
       "reminder": true
+    },
+    {
+      "text": "Buy SHIBX",
+      "day": "October 28 2020",
+      "reminder": true,
+      "id": "WrJrB5n"
     }
   ]
 }

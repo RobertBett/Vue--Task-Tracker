@@ -6,6 +6,7 @@
         :showEditTask="showEditTask"
         title="Task Tracker"/>
         <router-view 
+        @toggle-task="toggleTask"
         @show-edit="toggleEdit"
         :showEditTask="showEditTask"
         :showAddTask="showAddTask"/>
@@ -54,6 +55,7 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 body {
   font-family: 'Poppins', sans-serif;

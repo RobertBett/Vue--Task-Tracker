@@ -1,20 +1,22 @@
 <template>
     <div>
-    <AddTask 
-        v-if="showAddTask" 
-        @add-task="createTask" 
-        title="Task Tracker"/>
-    <EditTask 
-        v-if="showEditTask"
-        @edited-task="afterEditTask"
-        :task="editedTask"
-    />
+        <AddTask 
+            v-if="showAddTask" 
+            @add-task="createTask" 
+            title="Task Tracker"/>
+        <EditTask 
+            v-if="showEditTask"
+            @edited-task="afterEditTask"
+            :task="editedTask"
+        />
 
-    <Tasks 
-        @delete-task="deleteTask"
-        @toggle-reminder="toggleReminder" 
-        @edit-task="editTask" 
-        :tasks="tasks"/> 
+    <div class="tasks">
+        <Tasks 
+            @delete-task="deleteTask"
+            @toggle-reminder="toggleReminder" 
+            @edit-task="editTask" 
+            :tasks="tasks"/> 
+    </div>
     </div>
 </template> 
 
@@ -100,11 +102,19 @@
                     body: JSON.stringify(newTask),
                 })
                 this.tasks =  await this.fetchTasks();
+                this.$emit('toggle-task')
             },
         },
         async created() {
             this.tasks =  await this.fetchTasks();
         },
-        emits:['show-edit'],
+        emits:['show-edit', 'toggle-task'],
     }
 </script>
+
+<style scoped>
+ .tasks {
+     height:50vh;
+     overflow:scroll;
+ }
+</style>
